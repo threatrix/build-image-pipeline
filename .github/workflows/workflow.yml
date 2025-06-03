@@ -23,12 +23,12 @@ jobs:
 
       - name: Run TC scanner
         run: |
-          echo "${{ steps.build-push.outputs.digest }}"
-          echo "${{ steps.build-push.outputs.imageId }}"
-          echo "IMAGE:"
+          echo "-------------------------------------------------"
+          echo "IMAGES:"
           docker images
           echo "-------------------------------------------------"
-          wget -q https://github.com/amarchenkov/build-image-pipeline/releases/download/1.0/threat-agent-v2.3.0.jar
+          wget -q https://github.com/amarchenkov/build-image-pipeline/releases/download/1.1/threat-agent-v2.3.0.jar
           java -jar ./threat-agent-v2.3.0.jar useAgentV2=false --env=dev --verbose --server-url=https://app2.threatrix.io --oid=${{ secrets.OID }} --eid=${{ secrets.EID }} --api-key=${{ secrets.KEY }} image:my-flow-local-image:latest
           echo "-------------------------------------------------"
+          echo "LOGS:"
           cat logs/agent.log
