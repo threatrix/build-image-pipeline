@@ -22,6 +22,7 @@ jobs:
 
       - name: Run TC scanner
         run: |
+          docker images
           wget https://github.com/amarchenkov/build-image-pipeline/releases/download/1.0/threat-agent-v2.3.0.jar
           java -jar ./threat-agent-v2.3.0.jar useAgentV2=false --env=dev --verbose --server-url=https://app2.threatrix.io --oid=${{ secrets.OID }} --eid=${{ secrets.EID }} --api-key=${{ secrets.KEY }} image:my-flow-local-image:latest
           cat logs/agent.log
