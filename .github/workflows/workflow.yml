@@ -1,0 +1,25 @@
+name: Build and Scan Docker Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        id: build-push
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: my-flow-local-image:latest
+
+      - name: Run TC scanner
+        run: |
+          java -jar ./threat-agent-v2.3.0.jar useAgentV2=false --env=dev --verbose --server-url=https://app2.threatrix.io --oid=${{ secrets.OID }} --eid=${{ secrets.EID }} --api-key=${{ secrets.KEY }} image:my-flow-local-image:latest
