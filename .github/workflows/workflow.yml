@@ -18,7 +18,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: false
-          load: 'true'
+          load: 'true' # If false, image won't be visible on next step
           tags: my-flow-local-image:latest
 
       - name: Run TC scanner
