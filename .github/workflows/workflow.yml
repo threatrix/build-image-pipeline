@@ -28,7 +28,7 @@ jobs:
           docker images
           echo "-------------------------------------------------"
           wget -q https://github.com/amarchenkov/build-image-pipeline/releases/download/1.1/threat-agent-v2.3.0.jar
-          java -jar ./threat-agent-v2.3.0.jar useAgentV2=false -app-name='tupelo image scan'  --server-url=https://app2.threatrix.io --oid=8b718fe2-7ca4-424f-98a6-92b359c36e67 --eid=44811ad5-a640-4d4c-a8d5-20d81bca78e0 --api-key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcmctdXNlcm5hbWUiLCJpc3MiOiI4YjcxOGZlMi03Y2E0LTQyNGYtOThhNi05MmIzNTljMzZlNjciLCJleHAiOjE3NjQ2MjQyMDQsImlhdCI6MTc0ODk4NTgwNH0.Ydz8v0dhytkhU9mtbVHX2NXtx4mBD9xAOUrbk0rQP6c image:my-flow-local-image:latest
+          java -jar ./threat-agent-v2.3.0.jar useAgentV2=false --app-name='tupelo image scan' --server-url=https://app2.threatrix.io --oid=8b718fe2-7ca4-424f-98a6-92b359c36e67 --eid=44811ad5-a640-4d4c-a8d5-20d81bca78e0 --api-key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcmctdXNlcm5hbWUiLCJpc3MiOiI4YjcxOGZlMi03Y2E0LTQyNGYtOThhNi05MmIzNTljMzZlNjciLCJleHAiOjE3NjQ2MjQyMDQsImlhdCI6MTc0ODk4NTgwNH0.Ydz8v0dhytkhU9mtbVHX2NXtx4mBD9xAOUrbk0rQP6c image:my-flow-local-image:latest
           echo "-------------------------------------------------"
           echo "LOGS:"
           cat logs/agent.log
